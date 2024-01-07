@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLEX BOX React App</title>
+    <style>
+        .flex-box {
+            font-size: 45px;
+        }
+        .child {
+            border: 2px solid black;
+            margin: 10px;
+            height: 150px;
+            width: 150px;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    const flexBox = React.createElement("div", {
+        className: "flex-box",
+        children : [ "parent",
+            React.createElement("div", {
+                className: "child",
+                children: "1",
+                style: {
+                    backgroundColor: "red",
+                }
+            }),
+            React.createElement("div", {
+                className: "child",
+                children: "2",
+                style: {
+                    backgroundColor: "yellow",
+                }
+            }),
+            React.createElement("div", {
+                className: "child",
+                children: "3",
+                style: {
+                    backgroundColor: "green",
+                }
+            }),
+            React.createElement("div", {
+                className: "child",
+                children: "4",
+                style: {
+                    backgroundColor: "blue",
+                }
+            }),
+        ],
+        style: {
+            border: "2px solid black",
+            display: "flex",
+            padding: "20px",
+            backgroundColor: "pink",
+            justifyContent: "center",
+        }
+    });
+
+    const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
+
+    reactRoot.render(flexBox);
+</script>
+</html>
