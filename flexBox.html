@@ -65,6 +65,19 @@
         }
     });
 
+    // 2nd method
+    const flexBox2 = (
+        <div className="flex-box" style={{border: "2px solid black", display: "flex", padding: "20px", backgroundColor: "pink", justifyContent: "center"}}>
+            parent
+            <div className="child" style={{backgroundColor: "red"}}>1</div>
+            <div className="child" style={{backgroundColor: "yellow"}}>2</div>
+            <div className="child" style={{backgroundColor: "green"}}>3</div>
+            <div className="child" style={{backgroundColor: "blue"}}>4</div>
+        </div>
+    );
+
+
+    // 3rd method
     const reactRoot = ReactDOM.createRoot(document.getElementById("root"));
 
     reactRoot.render(flexBox);
