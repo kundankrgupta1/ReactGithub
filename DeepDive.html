@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX SYNTAX DEEP DIVE</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        #root {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            border-radius: 5px;
+            padding: 20px;
+        }
+        .main {
+            display: flex;
+            gap: 20px;
+        }
+        .main > div > img {
+            height: 200px;
+            border-radius: 10px;
+        }
+        h3 {
+            margin-bottom: 10px;
+        }
+        h4 {
+            margin-bottom: 10px;
+        }
+        .main > div > h4 > ul {
+            display: flex;
+            gap: 10px;
+        }
+
+        h4 > ul > li {
+            list-style: none;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: rgb(255, 0, 123);
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        h1 {
+            text-transform: uppercase;
+            font-size: 42px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: blue;
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .items{
+            padding: 0 15px;
+            border-radius: 10px;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+    function handleClick() {
+        alert("Hello React Developer");
+    }
+
+    function DisplayJSX (props) {
+        return (
+            <div className="main">
+                <div>
+                    <img src={props.img} alt="kundanImage" />
+                </div> 
+                <div className="items">
+                    <h1>{props.name}</h1>
+                    <h3>{props.profession}</h3>
+                    <h4>
+                        <ul>
+                            {props.skill.length === 0 ? "No Skill" : props.skill.map((item) => <li>{item}</li>)}
+                        </ul>
+                    </h4>
+                    <button onClick={handleClick}>Click Me!</button>
+                </div>   
+            </div>
+        );
+    }
+
+    const JSXShowcase = (props) => {
+        const img = "https://kundankrgupta1.github.io/me.kundan/img/me.jpg";
+        const name = "Kundan Kumar Gupta";
+        const profession = "Aspiring Full Stack Web Developer";
+        const skill = ["HTML", "CSS3", "JavaScript", "React.js", "node.js"]
+        const isLoggedIn = true;
+      
+
+        return (
+            <>
+                <span style={{backgroundColor: isLoggedIn ? "green" : "red", padding: "5px 10px", borderRadius: "5px", color: "#fff"}}>{isLoggedIn ? "Login Sucess" : "Logout Sucess"}
+                </span>
+                <br/>
+                <br/>
+                <div>
+                    {isLoggedIn ? 
+                    <DisplayJSX 
+                        img = {img}
+                        name = {name}
+                        profession = {profession}
+                        skill = {skill}
+                    />
+                 : ""}
+                 </div>                         
+            </>
+        );
+    }
+
+    ReactDOM.render(<JSXShowcase />, root)
+    
+</script>
+</html>
+

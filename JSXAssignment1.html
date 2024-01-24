@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/45f40d86eb.js" crossorigin="anonymous"></script>
+    <title>JSX Assignment 1</title>
+    <style>
+        body {
+            font-family: Poppins, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+    
+    const styleObject = {backgroundColor: "blue", color: "#fff", borderRadius: "5px", padding: "10px"}
+    const buttonStyle = {backgroundColor: "blue", color: "#fff", borderRadius: "5px", padding: "5px 10px", fontFamily : "Poppins, sans-serif"}
+    const icons = <i className="fa-sharp fa-solid fa-hand-point-down"></i>;
+
+
+    function MyComponants() {
+        
+        // const [text, setText] = useState("Alert Hello");
+        
+        const buttonText = "Alert Hello";
+        // const buttonSetText = "Alert Bye";
+        
+
+        function handleClick(){
+            // if(text === buttonText){
+            //     setText(buttonSetText);
+            //     alert("Bye");
+            // } else {
+            //     setText(buttonText);
+            //     alert("Hello");
+            // }
+            alert("Hello");
+        }
+
+        return (
+            <React.Fragment>
+                <p>React is a javascript library</p>
+                <div className="main">
+                    <p style={styleObject}>Click the below button to alert hello {icons}</p>
+                    <button onClick={handleClick} style={buttonStyle}>{buttonText}</button>
+                </div>
+            </React.Fragment>
+        );
+    };
+    
+    const reactRoot = ReactDOM.createRoot(document.getElementById("root")).render(<MyComponants />);
+</script>
+</html>

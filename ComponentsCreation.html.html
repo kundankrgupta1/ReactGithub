@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JSX and Babel</title>
+  <style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #root {
+        width: 1300px;
+        margin: auto;
+        /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 40px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .header > ul{
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 40px;
+    }
+    .header > ul > li{
+        list-style: none;
+        text-transform: uppercase;
+        background-color: red;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    .content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 10px;
+    }
+    .content > img {
+        width: 100%;
+        border-radius: 5px;
+    }
+    .footerMain {
+        margin-top: 20px;
+        background-color: black;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        color: #fff;
+        padding: 40px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    .footerText {
+        text-align: center;
+        background-color: grey;
+        color: #fff;
+        font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+    function Header(props){
+        return (
+            <div className="header">
+                <img src={props.logo} alt="logo" style={{height: "80px", padding: "10px"}} />
+                <ul>
+                    {props.navbar.map((item) => <li><a href="#" style={{color: "#fff"}}>{item}</a></li>)}
+                </ul>
+            </div>
+        );
+    }
+
+    function Content(props){
+        return (
+            <div className="content">
+                {props.image.map((img) => <img src={img} />)}
+            </div>
+        );
+    }
+
+    function Footer(props){
+        return (
+            <>
+                <div className="footerMain">
+                    <div style={{textAlign: "center"}}>
+                        <img src={props.logo} alt="logo" style={{height: "180px", padding: "10px"}} />
+                        <p>{props.footerMaterial}</p>
+                    </div>
+                    <ul>
+                        {props.navbar.map((item) => <li><a href="#" style={{color: "#fff"}}>{item}</a></li>)}
+                    </ul>
+                    <p>{props.footerMaterial}</p>
+                </div>
+                <p className="footerText">{props.footerText}</p>
+            </>
+        );
+    }
+
+    const App = () => {
+        const logo = "https://ja-africa.org/wp-content/uploads/2020/02/FedEx-Logo-PNG-Transparent.png";
+        const navbar = ["home", "about", "skills", "projects", "Resume"];
+        const image = ["https://picsum.photos/id/230/300/200", "https://picsum.photos/id/231/300/200", "https://picsum.photos/id/232/300/200", "https://picsum.photos/id/233/300/200", "https://picsum.photos/id/234/300/200", "https://picsum.photos/id/235/300/200", "https://picsum.photos/id/236/300/200", "https://picsum.photos/id/237/300/200", "https://picsum.photos/id/238/300/200"];
+        const footerMaterial = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        const footerText = "Copyright © 2023 - 2024 portfolio Ltd. All rights reserved.";
+
+        return (
+            <>
+                <Header
+                logo={logo}
+                navbar={navbar} />
+
+                <Content
+                image={image} />
+
+                <Footer
+                logo={logo}
+                footerMaterial={footerMaterial}
+                footerText={footerText}
+                navbar={navbar} />
+            </>
+        );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>

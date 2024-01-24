@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/45f40d86eb.js" crossorigin="anonymous"></script>
+  <title>Temperature Converter</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Poppins, sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+  const App = () => {
+    const [celcius, setCelcius] = React.useState("");
+    const [fahrenheit, setFahrenheit] = React.useState("");
+
+    function handleChange(event) {
+
+      if (event.target.name === "celcius") {
+        setCelcius(event.target.value);
+        setFahrenheit((event.target.value * 9 / 5) + 32);
+      } else {
+        setFahrenheit(event.target.value);
+        setCelcius((event.target.value - 32) * 5 / 9);
+      }
+    }
+
+
+    return (
+      <>
+        <h1>Temperature Converter</h1>
+        <label>
+          Celcius : <input type="text" name="celcius" onChange={handleChange} value={celcius} />
+        </label>
+        <br />
+        <br />
+        <label>
+          Fahrenheit : <input type="text" name="fahrenheit" onChange={handleChange} value={fahrenheit}  />
+        </label>
+        <br />
+        <br />
+        <hr />
+        <h1>{celcius > 0 ? celcius + "°C" + " =" : ""} {fahrenheit > 0 ? fahrenheit + "°F" : ""}</h1>
+      </>
+    );
+  };
+  const reactRoot = ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+
+</html>

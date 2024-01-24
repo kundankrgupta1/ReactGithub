@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic List Rendering</title>
+    <style>
+        ul {
+            display: flex;
+            gap: 60px;
+        }
+        ul > li {
+            text-transform: uppercase;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    function Message(props){
+        return (
+            <div>
+                <ul>
+                    {props.items.length === 0 ? "No tems found" : props.items.map((items) => <li>{items}</li> )}
+                </ul>
+            </div>
+        );
+    }
+    const ItemList = () => {
+        const items = ["apple", "banana", "cherry"]
+        const name = "Kundan"
+      return (
+        <>
+            <Message 
+            items = {items}
+            />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<ItemList />);
+  </script>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/45f40d86eb.js" crossorigin="anonymous"></script>
+    <title>Birthday Card</title>
+    <style>
+        body {
+            font-family: Poppins, sans-serif;
+        }
+
+        .input {
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+
+
+    function Message(props) {
+        return (
+            <div>
+                <p className="input">Happy BirthDay {props.recipientName} {props.customMessage}</p>
+            </div>
+        )
+    }
+
+    const BirthdayCard = () => {
+        
+        const [recipientName, setRecipientName] = React.useState();
+        const [customMessage, setCustomMessage] = React.useState();
+        
+
+        return (
+            <React.Fragment>
+                <label>Recipient Name: 
+                    <input
+                    type="text" 
+                    className="input" 
+                    name="recipientName" 
+                    placeholder="Recipient Name" 
+                    onChange={(e) => setRecipientName(e.target.value)} />
+                </label>
+
+                <br /><br />
+
+                <label>Custom Message: 
+                    <textarea
+                    type="text"
+                    className="input"
+                    name="customMessage"
+                    placeholder="Custom Message"
+                    onChange={(e) => setCustomMessage(e.target.value)}/>
+                </label>
+
+                <hr />
+
+                <Message
+                recipientName = {recipientName}
+                customMessage = {customMessage} />
+            </React.Fragment>
+        );
+    };
+    
+    ReactDOM.createRoot(document.getElementById("root")).render(<BirthdayCard />);
+</script>
+</html>

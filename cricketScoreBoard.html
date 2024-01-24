@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React useState</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        border-radius: 10px;
+      }
+      .buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      button {
+        padding: 5px 40px;
+        background-color: aqua;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 900;
+      }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+
+    
+  const CricketScoreboard = () => {
+    const [runs, setRuns] = React.useState(0.0);
+    const [wickets, setWickets] = React.useState(0);
+    const [overs, setOvers] = React.useState(0.0);
+
+    const data = [""]
+    
+    function increaseOvers(){
+      setOvers(overs + 1);
+    }
+    function handleclick1() {
+      setRuns(runs + 1);
+        increaseOvers();
+    }
+    function handleclick2() {
+      setRuns(runs + 2);
+        increaseOvers();
+    }
+    function handleclick3() {
+      setRuns(runs + 3);
+        increaseOvers();
+    }
+
+    function handleclick4() {
+      setRuns(runs + 4);
+        increaseOvers();
+    }
+
+    function handleclick6() {
+      setRuns(runs + 6);
+        increaseOvers();
+    }
+    function wicket() {
+      setWickets(wickets + 1);
+        increaseOvers();
+    }
+      
+
+    return (
+        <div className="container">
+          <h2>India vs Australia, 3rd Match, Group A - Live Cricket Score, Commentary</h2>
+          <h3>IND {runs}/{wickets === 10 || wickets > 10 ? "all-out": wickets}&nbsp;({(overs/6).toFixed(1)})</h3>
+          <div className="buttons">
+            <button onClick={handleclick1} style={{visibility: wickets === 10 ? "hidden" : "visible"}}>1</button>
+            <button onClick={handleclick2} style={{visibility: wickets === 10 ? "hidden" : "visible"}}>2</button>
+            <button onClick={handleclick3} style={{visibility: wickets === 10 ? "hidden" : "visible"}}>3</button>
+            <button onClick={handleclick4} style={{visibility: wickets === 10 ? "hidden" : "visible"}}>4</button>
+            <button onClick={handleclick6} style={{visibility: wickets === 10 ? "hidden" : "visible"}}>6</button>
+            <button onClick={wicket} style={{visibility: wickets === 10 ? "hidden" : "visible", backgroundColor: "red", color: "#fff"}}>W</button>    
+          </div>
+        </div>
+      );
+    }
+
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<CricketScoreboard />);
+  
+
+</script>
+</html>
+
+
+
