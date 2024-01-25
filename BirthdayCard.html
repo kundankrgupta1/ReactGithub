@@ -36,7 +36,14 @@
         
         const [recipientName, setRecipientName] = React.useState();
         const [customMessage, setCustomMessage] = React.useState();
-        
+
+        const [data, setData] = React.useState("");
+        const [data1, setData1] = React.useState("");
+
+        function handleClick() {
+            setData(recipientName)
+            setData1(customMessage)
+        }
 
         return (
             <React.Fragment>
@@ -59,12 +66,15 @@
                     placeholder="Custom Message"
                     onChange={(e) => setCustomMessage(e.target.value)}/>
                 </label>
+                <br /><br />
+                <button onClick={handleClick}>Submit</button>
 
                 <hr />
 
                 <Message
-                recipientName = {recipientName}
-                customMessage = {customMessage} />
+                recipientName = {data}
+                customMessage = {data1} />
+
             </React.Fragment>
         );
     };
