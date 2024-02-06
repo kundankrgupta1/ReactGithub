@@ -31,7 +31,7 @@ function App() {
     <>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error.message}</p>}
-      <DataDisplay data={data} />
+      {!isLoading && !error && <DataDisplay data={data} />}
     </>
   );  
 }
